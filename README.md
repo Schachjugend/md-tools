@@ -4,7 +4,7 @@ Kommandozeilentool, mit dem aus dem Markdown-Format der [Jugendspielordnung der 
 
 ## Installation
 
-(Node.js](http://nodejs.org/) wird benötigt. Danach kann das Programm wie folgt installiert werden:
+[Node.js](http://nodejs.org/) wird benötigt. Danach kann das Programm wie folgt installiert werden:
 
 	git clone https://github.com/Schachjugend/Jugendspielordnung-PDF.git
 	cd Jugendspielordnung-PDF
