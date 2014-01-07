@@ -1,6 +1,6 @@
 # PDF-Generator Jugendspielordnung
 
-Kommandozeilentool, mit dem aus dem Markdown-Format der [Jugendspielordnung der Deutschen Schachjugend](Schachjugend/Jugendspielordnung) eine PDF-Datei generiert wird.
+Kommandozeilentool, mit dem aus dem Markdown-Format der [Jugendspielordnung der Deutschen Schachjugend](https://github.com/Schachjugend/Jugendspielordnung) eine PDF-Datei generiert wird.
 
 ## Installation
 
