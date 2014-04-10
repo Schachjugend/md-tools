@@ -1,24 +1,23 @@
-# PDF-Generator Jugendspielordnung
+# Tools zur Jugendspielordnung
 
-Kommandozeilentool, mit dem aus dem Markdown-Format der [Jugendspielordnung der Deutschen Schachjugend](https://github.com/Schachjugend/Jugendspielordnung) eine PDF-Datei generiert wird.
+Kommandozeilentool, mit dem aus dem Markdown-Format der [Jugendspielordnung der Deutschen Schachjugend](https://github.com/Schachjugend/Jugendspielordnung) verschiedene Ausgabeformate erzeugt werden. Aktuell kann HTML und PDF generiert werden.
 
 ## Installation
 
 [Node.js](http://nodejs.org/) wird benötigt. Danach kann das Programm wie folgt installiert werden:
 
-	git clone https://github.com/Schachjugend/Jugendspielordnung-PDF.git
-	cd Jugendspielordnung-PDF
+	git clone https://github.com/Schachjugend/Jugendspielordnung-Tools.git
+	cd Jugendspielordnung-Tools
 	npm install
 
 Eine Veröffentlichung auf [npm](http://nodejs.org/) ist derzeit nicht geplant.
 
 ## Nutzung
 
-	Usage: jugendspielordnung2pdf [options] <markdown-file-path>
+	Usage: jugendspielordnung publish [options] [command]
 
-	Options:
+	Commands:
 
-	    -h, --help            output usage information
-	    -V, --version         output the version number
-	    <markdown-file-path>  Path of the markdown file to convert
-	    -o, --out [path]      Path of where to save the PDF
+	  all [markdown] [directory] create all output formats with default options
+	  html [options] [markdown] publish as HTML
+	  pdf [options] [markdown] [output] publish as PDF

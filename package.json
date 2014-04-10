@@ -1,22 +1,25 @@
 {
-  "name": "jugendspielordnung-pdf",
-  "description": "PDF Creator for the Tournament Rules of the German Chess Youth.",
-  "version": "0.0.1",
+  "name": "jugendspielordnung-tools",
+  "private": true,
+  "description": "Tools to publish the Tournament Rules of the German Chess Youth.",
+  "version": "0.1.0",
   "repository": {
     "type": "git",
     "url": "git://github.com/Schachjugend/Jugendspielordnung-PDF.git"
   },
-  "author": "Falco Nogatz <fnogatz@googlemail.com> (http://nogatz.net)",
+  "author": "Falco Nogatz <fnogatz@gmail.com> (http://falco.io)",
   "engines": {
-    "node": "0.8.x"
+    "node": "0.10.x"
   },
   "bin": {
-    "jugendspielordnung2pdf": "./bin/jugendspielordnung2pdf"
+    "jugendspielordnung": "./bin/jugendspielordnung"
   },
   "dependencies": {
-    "markdown-pdf": "2.1.x",
-    "commander": "2.1.x",
+    "marked": "0.3.x",
+    "commander": "2.2.x",
     "through": "2.3.x",
-    "cheerio": "0.13.x"
+    "cheerio": "0.13.x",
+    "tmp": "0.0.x",
+    "phantomjs": "1.9.x"
   }
 }

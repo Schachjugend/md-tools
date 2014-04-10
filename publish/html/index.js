@@ -1,35 +1,31 @@
-module.exports = createPDF
+module.exports = html;
 
-var fs = require('fs')
-var http = require('http')
-var markdownpdf = require('markdown-pdf')
-var through = require('through')
-var cheerio = require('cheerio')
-
-
-function createPDF(options) {
-  var pdfOptions = {
-    paperOrientation: 'landscape',
-    paperFormat: 'A4',
-    runningsPath: __dirname+'/runnings.js',
-    cssPath: __dirname + '/style.css',
-    paperBorder: '1.4cm',
-    preProcessHtml: preProcessHtmlThrough
-  }
-
-  return markdownpdf(pdfOptions)
-}
+var fs = require('fs');
+var through = require('through');
+var marked = require('marked');
+var cheerio = require('cheerio');
 
 
-function preProcessHtmlThrough() {
-  var html = ''
+function html(options) {
+  options = options || {};
+  options.scaffold = options.scaffold || __dirname + '/scaffold.html';
 
-  return through(function write(data) {
-    html += data
+  var md = '';
+  var stream = through(function write(data) {
+    md += data;
   }, function end() {
-    this.queue(preProcessHtml(html))
-    this.queue(null)
-  })
+    var html = marked(md);
+    var modifiedHtml = preProcessHtml(html);
+
+    var res = options.plain
+                ? modifiedHtml
+                : scaffold(modifiedHtml, options);
+
+    this.queue(res);
+    this.queue(null);
+  });
+
+  return stream;
 }
 
 
@@ -72,7 +68,6 @@ function preProcessHtml(html) {
     })
   })
 
-
   return _.html()
 }
 
@@ -89,4 +84,13 @@ function addHtml($, row) {
       row.append('<ol>'+$(this).html()+'</ol>')
     }
   }
+}
+
+
+function scaffold(html, options) {
+  var scaffold = fs.readFileSync(options.scaffold);
+  var $ = cheerio.load(scaffold);
+  $('body').append(html);
+
+  return $.html();
 }
