@@ -32,7 +32,7 @@ function html(options) {
 function preProcessHtml(html) {
   var $ = cheerio.load('<body>'+html+'</body>')
   var _ = cheerio.load('<table class="main-table"><thead><tr><th></th><th>Jugendspielordnung</th><th>Ausführungsbestimmungen</th></tr></thead><tbody></tbody></table>')
-  
+
   var preambles = [
     $('p').eq(0).text(),
     $('blockquote').eq(0).text()
@@ -66,7 +66,7 @@ function preProcessHtml(html) {
 
       _('tbody').append(row.html())
     })
-  })
+  });
 
   return _.html()
 }
@@ -75,7 +75,7 @@ function preProcessHtml(html) {
 function addHtml($, row) {
   return function(i, e) {
     if ($(this).is('p')) {
-      row.append('<p>'+$(this).text()+'</p>')
+      row.append('<p>'+$(this).html()+'</p>')
     }
     else if ($(this).is('ul')) {
       row.append('<ul>'+$(this).html()+'</ul>')
