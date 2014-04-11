@@ -67,7 +67,7 @@ function publishPDF(mdFile, outputPath, options) {
   if (!options.date) {
     var md = fs.readFileSync(mdFile, 'utf8');
     var jvChanged = md.match('Diese Jugendspielordnung wurde von der Jugendversammlung der Deutschen Schachjugend am 2. März 2008 in Bremen beschlossen und zuletzt am (.*) in .* geändert.')[1]
-    var aksChanged = md.match('Die Ausführungsbestimmungen wurden zuletzt vom Arbeitskreis Spielbetrieb am (.*) geändert.')[1]
+    var aksChanged = md.match('Die Ausführungsbestimmungen wurden zuletzt (vom Arbeitskreis Spielbetrieb|von der Jugendversammlung) am (.*) geändert.')[2]
     
     var jvChangedDate = parseGermanDate(jvChanged);
     var aksChangedDate = parseGermanDate(aksChanged);
