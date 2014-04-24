@@ -43,7 +43,7 @@ function preProcessHtml(html) {
     var number = $(this).text().replace(/^([0-9]*)\.\s.*/, '$1')
     var text = $(this).text().replace(/^[0-9]*\.\s(.*)/, '$1')
 
-    _('tbody').append('<tr><th>'+number+'</th><th>'+text+'</th><th></th></tr>')
+    _('tbody').append('<tr id="'+number+'"><th>'+number+'</th><th>'+text+'</th><th></th></tr>')
 
     if (!$(this).next().is('ol')) {
       $(this).nextUntil('ol').filter('blockquote').find('p').each(function () {
@@ -56,7 +56,8 @@ function preProcessHtml(html) {
     }
 
     ol.children('li').each(function (subsectionIx, subsection) {
-      var row = cheerio.load('<tr><td>'+number+'.'+(subsectionIx+1)+'</td><td class="sp"></td><td class="ab"></td></tr>')
+      var id = number+'.'+(subsectionIx+1);
+      var row = cheerio.load('<tr id="'+id+'"><td>'+id+'</td><td class="sp"></td><td class="ab"></td></tr>')
 
       $(this).children().each(addHtml($, row('.sp')))
 
@@ -75,7 +76,12 @@ function preProcessHtml(html) {
 function addHtml($, row) {
   return function(i, e) {
     if ($(this).is('p')) {
-      row.append('<p>'+$(this).html()+'</p>')
+      var html = $(this).html()
+      // var html = $(this).html().split('. ').map(function(sentence, number) {
+      //   return '<sup id="">'+(number+1)+'</sup>'+sentence;
+      // }).join('. ')
+
+      row.append('<p>'+html+'</p>')
     }
     else if ($(this).is('ul')) {
       row.append('<ul>'+$(this).html()+'</ul>')
