@@ -57,7 +57,7 @@ function preProcessHtml(html) {
 
     ol.children('li').each(function (subsectionIx, subsection) {
       var id = number+'.'+(subsectionIx+1);
-      var row = cheerio.load('<tr id="'+id+'"><td>'+id+'</td><td class="sp"></td><td class="ab"></td></tr>')
+      var row = cheerio.load('<tr id="'+id+'"><td><a href="#'+id+'">'+id+'</a></td><td class="sp"></td><td class="ab"></td></tr>')
 
       $(this).children().each(addHtml($, row('.sp')))
 
