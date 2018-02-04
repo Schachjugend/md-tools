@@ -18,7 +18,7 @@
     "cheerio": "^0.13.1",
     "commander": "^2.13.0",
     "marked": "^0.3.12",
-    "phantomjs-prebuilt": "^2.1.16",
+    "phantomjs": "1.9.16",
     "through": "^2.3.8",
     "tmp": "0.0.33"
   },
