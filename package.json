@@ -8,9 +8,6 @@
     "url": "git://github.com/Schachjugend/md-tools.git"
   },
   "author": "Falco Nogatz <fnogatz@gmail.com>",
-  "engines": {
-    "node": "0.10.x"
-  },
   "bin": {
     "schachjugend-md": "./bin/schachjugend-md"
   },
