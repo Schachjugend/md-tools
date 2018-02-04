@@ -5,7 +5,7 @@ var path = require('path')
 var childProcess = require('child_process')
 var through = require('through')
 var tmp = require('tmp')
-var phantomjs = require('phantomjs')
+var phantomjs = require('phantomjs-prebuilt')
 
 function pdf (outputPath, options) {
   options = options || {}
