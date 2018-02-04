@@ -2,7 +2,7 @@
   "name": "schachjugend-md-tools",
   "private": true,
   "description": "Tools to publish regulations of the German Chess Youth.",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "repository": {
     "type": "git",
     "url": "git://github.com/Schachjugend/md-tools.git"
