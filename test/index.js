@@ -15,8 +15,8 @@ interpreted({
     var catchStream = through(function write (data) {
       html += data
     }, function end () {
-        callback(null, html)
-      })
+      callback(null, html)
+    })
 
     fs.createReadStream(path.resolve(__dirname, 'md', name + '.md'))
       .pipe(publish.html())

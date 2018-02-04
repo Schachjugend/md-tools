@@ -20,53 +20,53 @@ function pdf (outputPath, options) {
   var stream = through(function write (data) {
     html += data
   }, function end () {
-      var self = this
+    var self = this
 
-      tmp.file({ mode: parseInt(644, 8), postfix: '.html' }, function htmlFileCreated (err, tmpHtmlPath, htmlFd) {
+    tmp.file({ mode: parseInt(644, 8), postfix: '.html' }, function htmlFileCreated (err, tmpHtmlPath, htmlFd) {
+      if (err) { return self.emit('error', err) }
+
+      fs.write(htmlFd, html)
+      fs.close(htmlFd, function (err) {
         if (err) { return self.emit('error', err) }
 
-        fs.write(htmlFd, html)
-        fs.close(htmlFd, function (err) {
+        fs.readFile(options.runningsPath, 'utf8', function (err, js) {
           if (err) { return self.emit('error', err) }
 
-          fs.readFile(options.runningsPath, 'utf8', function (err, js) {
+          js = js.replace('<!-- date -->', options.date)
+          js = js.replace('<!-- generatedBy -->', options.generatedBy)
+          js = js.replace('<!-- generated -->', options.generated)
+
+          tmp.file({ mode: parseInt(644, 8), postfix: '.js' }, function jsFileCreated (err, tmpRunningsPath, jsFd) {
             if (err) { return self.emit('error', err) }
 
-            js = js.replace('<!-- date -->', options.date)
-            js = js.replace('<!-- generatedBy -->', options.generatedBy)
-            js = js.replace('<!-- generated -->', options.generated)
-
-            tmp.file({ mode: parseInt(644, 8), postfix: '.js' }, function jsFileCreated (err, tmpRunningsPath, jsFd) {
+            fs.write(jsFd, js)
+            fs.close(jsFd, function (err) {
               if (err) { return self.emit('error', err) }
 
-              fs.write(jsFd, js)
-              fs.close(jsFd, function (err) {
-                if (err) { return self.emit('error', err) }
-
-                var childArgs = [
-                  path.join(__dirname, 'phantom.js'),
-                  tmpHtmlPath,
-                  outputPath,
-                  tmpRunningsPath,
-                  options.paperFormat,
-                  options.paperOrientation,
-                  options.paperBorder,
-                  options.renderDelay
-                ]
+              var childArgs = [
+                path.join(__dirname, 'phantom.js'),
+                tmpHtmlPath,
+                outputPath,
+                tmpRunningsPath,
+                options.paperFormat,
+                options.paperOrientation,
+                options.paperBorder,
+                options.renderDelay
+              ]
 
                 // console.log(childArgs)
 
-                childProcess.execFile(options.phantomPath, childArgs, function (err, stdout, stderr) {
-                  if (err) {
-                    return self.emit('error', err)
-                  }
-                })
+              childProcess.execFile(options.phantomPath, childArgs, function (err, stdout, stderr) {
+                if (err) {
+                  return self.emit('error', err)
+                }
               })
             })
           })
         })
       })
     })
+  })
 
   return stream
 }

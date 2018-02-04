@@ -1,28 +1,29 @@
 module.exports = html
 
 var fs = require('fs')
+var path = require('path')
 var through = require('through')
 var marked = require('marked')
 var cheerio = require('cheerio')
 
 function html (options) {
   options = options || {}
-  options.scaffold = options.scaffold || __dirname + '/scaffold.html'
+  options.scaffold = options.scaffold || path.join(__dirname, '/scaffold.html')
 
   var md = ''
   var stream = through(function write (data) {
     md += data
   }, function end () {
-      var markedHtml = marked(md)
-      var modifiedHtml = preProcessHtml(markedHtml)
+    var markedHtml = marked(md)
+    var modifiedHtml = preProcessHtml(markedHtml)
 
-      var res = options.plain
+    var res = options.plain
         ? modifiedHtml
         : scaffold(modifiedHtml, options)
 
-      this.queue(res)
-      this.queue(null)
-    })
+    this.queue(res)
+    this.queue(null)
+  })
 
   return stream
 }

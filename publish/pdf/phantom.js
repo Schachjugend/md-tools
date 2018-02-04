@@ -1,4 +1,4 @@
-/*global phantom:false */
+/* global phantom:false */
 var system = require('system')
 var page = require('webpage').create()
 
@@ -38,9 +38,9 @@ function paperSize (runningsPath, obj) {
   var keys = ['header', 'footer']
   for (var i = 0; i < keys.length; i++) {
     var which = keys[i]
-    if (runnings[which]
-      && runnings[which].contents
-      && typeof runnings[which].contents === 'function') {
+    if (runnings[which] &&
+      runnings[which].contents &&
+      typeof runnings[which].contents === 'function') {
       obj[which] = {
         contents: phantom.callback(runnings[which].contents)
       }
