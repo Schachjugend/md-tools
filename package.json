@@ -9,7 +9,7 @@
   },
   "author": "Falco Nogatz <fnogatz@gmail.com>",
   "engines": {
-    "node" : ">= 4 <= 6"
+    "node": ">= 4 <= 6"
   },
   "bin": {
     "schachjugend-md": "./bin/schachjugend-md"
