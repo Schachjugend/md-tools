@@ -2,7 +2,7 @@ var fs = require('fs')
 var path = require('path')
 var interpreted = require('interpreted')
 var through = require('through')
-var publish = require('../publish/index')
+var html = require('../lib/spielordnung/html/index')
 
 interpreted({
   source: path.resolve(__dirname, 'md'),
@@ -10,16 +10,16 @@ interpreted({
 
   // This method will be used to test the files.
   test: function (name, content, callback) {
-    var html = ''
+    var str = ''
 
     var catchStream = through(function write (data) {
-      html += data
+      str += data
     }, function end () {
-      callback(null, html)
+      callback(null, str)
     })
 
     fs.createReadStream(path.resolve(__dirname, 'md', name + '.md'))
-      .pipe(publish.html())
+      .pipe(html())
       .pipe(catchStream)
   },
 

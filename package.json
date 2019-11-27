@@ -2,31 +2,32 @@
   "name": "schachjugend-md-tools",
   "private": true,
   "description": "Tools to publish regulations of the German Chess Youth.",
-  "version": "0.3.1",
+  "version": "1.0.0",
   "repository": {
     "type": "git",
     "url": "git://github.com/Schachjugend/md-tools.git"
   },
   "author": "Falco Nogatz <fnogatz@gmail.com>",
   "engines": {
-    "node": ">= 4 <= 6"
+    "node": ">= 10"
   },
   "bin": {
     "schachjugend-md": "./bin/schachjugend-md"
   },
   "scripts": {
-    "test": "standard && node test/index.js"
+    "standard": "standard lib/* bin/*",
+    "test": "npm run standard && node test/index.js"
   },
   "dependencies": {
     "cheerio": "^0.13.1",
-    "commander": "^2.13.0",
-    "marked": "^0.3.12",
-    "phantomjs": "1.9.16",
+    "commander": "^4.0.1",
+    "marked": "^0.7.0",
+    "puppeteer": "^2.0.0",
     "through": "^2.3.8",
-    "tmp": "0.0.33"
+    "tmp-promise": "^2.0.2"
   },
   "devDependencies": {
-    "interpreted": "^0.5.0",
-    "standard": "^10.0.3"
+    "interpreted": "^1.0.1",
+    "standard": "^14.3.1"
   }
 }
