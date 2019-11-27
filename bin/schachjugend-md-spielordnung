@@ -47,6 +47,9 @@ function publishPdf (file, outputPath, options) {
 
 async function publishAll (input, dir, options) {
   options.dir = dir
+  if (!path.isAbsolute(options.dir)) {
+    options.dir = path.join(process.cwd(), options.dir)
+  }
 
   const extension = path.extname(input)
   const basename = path.basename(input, extension)
