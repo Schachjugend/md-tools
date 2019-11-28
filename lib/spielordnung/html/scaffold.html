@@ -47,9 +47,28 @@
     display: none;
   }
 
-  table > thead th:nth-child(2),
-  table > thead th:nth-child(3) {
+  table th:nth-child(2),
+  table th:nth-child(3),
+  .avoid-page-break table td:nth-child(2),
+  .avoid-page-break table td:nth-child(3) {
     width: 48.5%;
+  }
+
+  .avoid-page-break table tr:first-child th,
+  .avoid-page-break table tr:first-child td {
+    border-top: 0;
+  }
+  .avoid-page-break table tr:last-child th,
+  .avoid-page-break table tr:last-child td {
+    border-bottom: 0;
+  }
+  .avoid-page-break table th:first-child,
+  .avoid-page-break table td:first-child {
+    border-left: 0;
+  }
+  .avoid-page-break table th:last-child,
+  .avoid-page-break table td:last-child {
+    border-right: 0;
   }
 
   table td p + ul {
