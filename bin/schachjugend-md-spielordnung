@@ -12,6 +12,8 @@ program
   .description('publish as HTML')
   .option('-h, --scaffold [file]', 'HTML scaffold file')
   .option('-p, --plain', 'generate plain table, without HTML scaffold')
+  .option('--commit-md <hash>', 'commit hash of Markdown source file')
+  .option('--commit-creator <hash>', 'commit hash of md-tools')
   .action(publishHtml)
 
 program
@@ -20,6 +22,8 @@ program
   .option('--dir <dir>', 'tmp dir used if Markdown file provided')
   .option('--date <date>', 'creation date', null, fn.dateString)
   .option('--generated <date>', 'generation date', fn.dateString(), fn.dateString)
+  .option('--commit-md <hash>', 'commit hash of Markdown source file')
+  .option('--commit-creator <hash>', 'commit hash of md-tools')
   .action(publishPdf)
 
 program
@@ -27,6 +31,8 @@ program
   .description('publish as HTML and PDF in <dir> from a given Markdown file')
   .option('--date <date>', 'creation date', null, fn.dateString)
   .option('--generated <date>', 'generation date', fn.dateString(), fn.dateString)
+  .option('--commit-md <hash>', 'commit hash of Markdown source file')
+  .option('--commit-creator <hash>', 'commit hash of md-tools')
   .action(publishAll)
 
 program.parse(process.argv)
