@@ -19,12 +19,12 @@
     "test": "npm run standard && node test/index.js"
   },
   "dependencies": {
-    "cheerio": "^0.13.1",
-    "commander": "^4.0.1",
-    "marked": "^0.7.0",
-    "puppeteer": "^2.0.0",
+    "cheerio": "^0.22.0",
+    "commander": "^6.0.0",
+    "marked": "^1.1.1",
+    "puppeteer": "^5.2.1",
     "through": "^2.3.8",
-    "tmp-promise": "^2.0.2"
+    "tmp-promise": "^3.0.2"
   },
   "devDependencies": {
     "interpreted": "^1.0.1",
