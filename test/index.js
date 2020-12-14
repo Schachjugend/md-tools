@@ -1,8 +1,8 @@
-var fs = require('fs')
-var path = require('path')
-var interpreted = require('interpreted')
-var through = require('through')
-var html = require('../lib/spielordnung/html/index')
+const fs = require('fs')
+const path = require('path')
+const interpreted = require('interpreted')
+const through = require('through')
+const html = require('../lib/spielordnung/html/index')
 
 interpreted({
   source: path.resolve(__dirname, 'md'),
@@ -10,9 +10,9 @@ interpreted({
 
   // This method will be used to test the files.
   test: function (name, content, callback) {
-    var str = ''
+    let str = ''
 
-    var catchStream = through(function write (data) {
+    const catchStream = through(function write (data) {
       str += data
     }, function end () {
       callback(null, str)
