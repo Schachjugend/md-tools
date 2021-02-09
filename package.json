@@ -2,7 +2,7 @@
   "name": "schachjugend-md-tools",
   "private": true,
   "description": "Tools to publish regulations of the German Chess Youth.",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "repository": {
     "type": "git",
     "url": "git://github.com/Schachjugend/md-tools.git"
@@ -22,7 +22,7 @@
     "cheerio": "^0.22.0",
     "commander": "^7.0.0",
     "marked": "^2.0.0",
-    "puppeteer": "^5.2.1",
+    "puppeteer": "^7.0.1",
     "through": "^2.3.8",
     "tmp-promise": "^3.0.2"
   },
