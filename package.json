@@ -21,7 +21,7 @@
   "dependencies": {
     "cheerio": "^0.22.0",
     "commander": "^7.0.0",
-    "marked": "^2.0.0",
+    "marked": "^4.0.10",
     "puppeteer": "^7.0.1",
     "through": "^2.3.8",
     "tmp-promise": "^3.0.2"
