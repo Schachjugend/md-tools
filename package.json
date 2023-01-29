@@ -22,7 +22,7 @@
     "cheerio": "^0.22.0",
     "commander": "^7.0.0",
     "marked": "^2.0.0",
-    "puppeteer": "^7.0.1",
+    "puppeteer": "^19.6.2",
     "through": "^2.3.8",
     "tmp-promise": "^3.0.2"
   },

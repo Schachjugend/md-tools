@@ -54,10 +54,17 @@ function publishPdf (file, outputPath, options) {
 async function publishAll (input, dir, options) {
   options.dir = dir
 
+  console.log("Publishing both html and pdf")
+
   const extension = path.extname(input)
   const basename = path.basename(input, extension)
   const htmlFile = path.join(options.dir, basename + '.html')
   const pdfFile = path.join(options.dir, basename + '.pdf')
+
+  console.log(`extension set to ${extension}`)
+  console.log(`basename set to ${basename}`)
+  console.log(`htmlFile set to ${htmlFile}`)
+  console.log(`pdfFile set to ${pdfFile}`)
 
   const spielordnung2html = require('../lib/spielordnung/html/index')
   const pipeline = util.promisify(stream.pipeline)
